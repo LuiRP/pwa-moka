@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->integer('permiso')->default(2);
-            $table->char('telefono');
+            $table->integer('telefono');
         });
     }
 
