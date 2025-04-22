@@ -28,22 +28,23 @@
                 </div>
             </div>
 
+            @if ($errors->any())
+                <div class="mt-3 rounded-lg p-2 text-start text-red-500">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <div class="mt-6 flex flex-row place-content-between gap-4">
                 <x-cancel-button ruta="usuario.index"></x-cancel-button>
                 <x-save-button></x-save-button>
             </div>
-
-            @if ($errors->any())
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>
-                            {{ $error }}
-                        </li>
-                    @endforeach
-                </ul>
-            @endif
         </form>
     </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const phoneInput = document.getElementById('telefono');
