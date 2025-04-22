@@ -10,7 +10,8 @@
 
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
+        <script src="/libs/sweetalert2.min.js"></script>
+        <link rel="stylesheet" href="/libs/sweetalert2.min.css">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @laravelPWA
     </head>
@@ -21,5 +22,48 @@
             {{ $slot }}
         </div>
     </body>
+
+    <script>
+        function confirmation(ev) {
+            ev.preventDefault();
+            const form = ev.currentTarget.closest('form');
+
+            Swal.fire({
+                title: "¿Esta seguro de eliminar esto?",
+                text: "No podra ser revertido",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Confirmar",
+                cancelButtonText: "Cancelar",
+                confirmButtonColor: "#facc15",
+                cancelButtonColor: "#9ca3af"
+
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        }
+
+        function cancel(ev) {
+            ev.preventDefault();
+            var urlToRedirect = ev.currentTarget.getAttribute('href');
+
+            Swal.fire({
+                title: "¿Esta seguro?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Confirmar",
+                cancelButtonText: "Cancelar",
+                confirmButtonColor: "#facc15",
+                cancelButtonColor: "#9ca3af"
+
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = urlToRedirect;
+                }
+            });
+        }
+    </script>
 
 </html>

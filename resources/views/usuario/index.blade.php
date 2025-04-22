@@ -33,7 +33,7 @@
                             <form class="inline-block" action="{{ route('usuario.destroy', $usuario) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button>
+                                <button onclick="confirmation(event)">
                                     <img class="h-4" src="/images/nav-icons/borrar.svg" alt="">
                                 </button>
                             </form>

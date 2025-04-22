@@ -29,7 +29,7 @@
                                 method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button>
+                                <button onclick="confirmation(event)">
                                     <img class="h-4" src="/images/nav-icons/borrar.svg" alt="">
                                 </button>
                             </form>
@@ -44,5 +44,7 @@
     <div class="mt-6">
         {{ $productos->links('vendor.pagination.simple-tailwind') }}
     </div>
+
+
 
 </x-admin-layout>
