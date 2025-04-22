@@ -86,9 +86,18 @@ class ProductoController extends Controller
             'descripcion' => ['required', 'string'],
             'categoria_id' => ['required', 'int'],
             'precio' => ['required', 'decimal:0,5'],
+            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+        $imageName = time() . '.' . $request->imagen->extension();
+        $request->imagen->move(public_path('images/uploads/'), $imageName);
+        $producto = new Producto();
+        $producto->nombre = $request->nombre;
+        $producto->descripcion = $request->descripcion;
+        $producto->categoria_id = $request->categoria_id;
+        $producto->precio = $request->precio;
+        $producto->imagen = 'images/uploads/' . $imageName;
+        $producto->save();
 
-        $producto->update($data);
 
         return to_route('producto.index', $producto);
     }

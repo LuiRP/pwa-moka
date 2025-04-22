@@ -18,11 +18,11 @@
                         {{ $producto->descripcion }}
                     </div>
 
-                    <div class="flex place-content-between">
-                        <div class="text-sm font-medium text-black">
+                    <div class="flex place-content-between place-items-center">
+                        <div class="mb-1 text-xl font-medium text-black">
                             {{ $producto->precio }}$
                         </div>
-                        <div>
+                        <div class="justify-center">
                             <a class="inline-block" href="{{ route('producto.edit', $producto) }}"><img class="h-4"
                                     src="/images/nav-icons/editar.svg" alt=""></a>
                             <form class="inline-block" action="{{ route('producto.destroy', $producto) }}"

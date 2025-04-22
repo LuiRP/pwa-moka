@@ -1,6 +1,7 @@
 <x-admin-layout>
     <div class="my-3 w-fit gap-4 space-y-3 place-self-center self-center rounded-lg bg-white p-4 shadow md:w-96">
-        <form action="{{ route('producto.update', $producto) }}" method="POST" class="text-pink-600">
+        <form action="{{ route('producto.update', $producto) }}" method="POST" class="text-pink-600"
+            enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mt-3 flex flex-col gap-4">
@@ -19,11 +20,15 @@
                 <div class="mt-3 flex flex-col gap-1">
                     <label for="categoria">Categoria</label>
                     <select class="rounded-lg border-2 border-pink-600" name="categoria_id" required>
-                        <option value="" disabled selected>Selecciona una categoria</option>
+                        <option value="{{ $producto->categoria->id }}" selected>
+                            {{ $producto->categoria->nombre }}
+                        </option>
                         @foreach ($categorias as $categoria)
-                            <option value="{{ $categoria->id }}">
-                                {{ $categoria->nombre }}
-                            </option>
+                            @if ($categoria != $producto->categoria)
+                                <option value="{{ $categoria->id }}">
+                                    {{ $categoria->nombre }}
+                                </option>
+                            @endif
                         @endforeach
                     </select>
                 </div>
