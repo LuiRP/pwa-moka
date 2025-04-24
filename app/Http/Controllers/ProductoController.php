@@ -38,25 +38,32 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
+        // Validate the request data
+        $validatedData = $request->validate([
             'nombre' => ['required', 'string'],
             'descripcion' => ['required', 'string'],
-            'categoria_id' => ['required', 'int'],
+            'categoria_id' => ['required', 'integer'],
             'precio' => ['required', 'decimal:0,5'],
             'imagen' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        $imageName = time() . '.' . $request->imagen->extension();
-        $request->imagen->move(public_path('images/uploads/'), $imageName);
-        $producto = new Producto();
-        $producto->nombre = $request->nombre;
-        $producto->descripcion = $request->descripcion;
-        $producto->categoria_id = $request->categoria_id;
-        $producto->precio = $request->precio;
-        $producto->imagen = 'images/uploads/' . $imageName;
-        $producto->save();
 
+        if ($request->hasFile('imagen')) {
+            $imageName = 'product_' . $request->id . '_' . time() . '.' . $request->imagen->extension();
 
-        return to_route('producto.index', $producto);
+            $request->imagen->move(public_path('images/uploads/'), $imageName);
+
+            $imagePath = 'images/uploads/' . $imageName;
+
+            $producto = Producto::create([
+                'nombre' => $validatedData['nombre'],
+                'descripcion' => $validatedData['descripcion'],
+                'categoria_id' => $validatedData['categoria_id'],
+                'precio' => $validatedData['precio'],
+                'imagen' => $imagePath
+            ]);
+        }
+
+        return redirect()->route('producto.index');
     }
 
     /**
@@ -81,27 +88,37 @@ class ProductoController extends Controller
      */
     public function update(Request $request, Producto $producto)
     {
-        $data = $request->validate([
+        // Validate the request data
+        $validatedData = $request->validate([
             'nombre' => ['required', 'string'],
             'descripcion' => ['required', 'string'],
-            'categoria_id' => ['required', 'int'],
+            'categoria_id' => ['required', 'integer'],
             'precio' => ['required', 'decimal:0,5'],
             'imagen' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        $imageName = time() . '.' . $request->imagen->extension();
-        $request->imagen->move(public_path('images/uploads/'), $imageName);
-        $producto = new Producto();
-        $producto->nombre = $request->nombre;
-        $producto->descripcion = $request->descripcion;
-        $producto->categoria_id = $request->categoria_id;
-        $producto->precio = $request->precio;
-        $producto->imagen = 'images/uploads/' . $imageName;
-        $producto->save();
 
+        if ($request->hasFile('imagen')) {
+            if ($producto->imagen && file_exists(public_path($producto->imagen))) {
+                unlink(public_path($producto->imagen));
+            }
 
-        return to_route('producto.index', $producto);
+            $imageName = 'product_' . $producto->id . '_' . time() . '.' . $request->imagen->extension();
+
+            $request->imagen->move(public_path('images/uploads/'), $imageName);
+
+            $imagePath = 'images/uploads/' . $imageName;
+
+            $producto->update([
+                'nombre' => $validatedData['nombre'],
+                'descripcion' => $validatedData['descripcion'],
+                'categoria_id' => $validatedData['categoria_id'],
+                'precio' => $validatedData['precio'],
+                'imagen' => $imagePath
+            ]);
+        }
+
+        return redirect()->route('producto.index');
     }
-
     /**
      * Remove the specified resource from storage.
      */
