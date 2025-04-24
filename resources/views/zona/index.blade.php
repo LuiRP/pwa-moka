@@ -1,6 +1,6 @@
 <x-admin-layout>
     <x-search-bar ruta="zona"></x-search-bar>
-    <div class="mt-3 grid grid-cols-1 gap-4 text-wrap md:grid-cols-2">
+    <div class="mt-3 grid w-full grid-cols-1 gap-4 text-wrap md:grid-cols-2">
         @foreach ($zonas as $zona)
             <div>
                 <div class="space-y-3 rounded-lg bg-white p-4 shadow">
