@@ -18,7 +18,7 @@
 
     <body class="flex min-h-screen flex-row bg-pink-600">
         @include('components.sidebar')
-        <div class="m-2 flex w-full flex-col">
+        <div class="m-2 flex w-full flex-col place-items-center">
             {{ $slot }}
         </div>
     </body>
@@ -64,6 +64,29 @@
                 }
             });
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const numberInputs = document.querySelectorAll('input[type="number"]');
+
+            numberInputs.forEach(input => {
+                input.addEventListener('keydown', function(e) {
+                    const allowedKeys = [
+                        'Backspace', 'Delete', 'Tab', 'Escape', 'Enter',
+                        'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'
+                    ];
+
+                    if ((e.ctrlKey || e.metaKey) && ['a', 'c', 'x', 'v'].includes(e.key
+                            .toLowerCase())) {
+                        return;
+                    }
+
+                    // Bloquea en caso de que no sea un numero o una tecla permitida
+                    if (!/^\d$/.test(e.key) && !allowedKeys.includes(e.key)) {
+                        e.preventDefault();
+                    }
+                });
+            });
+        });
     </script>
 
 </html>
