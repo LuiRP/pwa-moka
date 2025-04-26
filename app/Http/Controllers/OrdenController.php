@@ -83,7 +83,7 @@ class OrdenController extends Controller
 
             DB::commit();
 
-            return redirect()->route('orden.show', $orden)
+            return redirect()->route('orden.index')
                 ->with('success', 'Orden creada exitosamente!');
 
         } catch (\Exception $e) {
@@ -144,10 +144,10 @@ class OrdenController extends Controller
             }
 
             $orden->productos()->attach($productosData);
-            $orden->update(['total' => $total]);
+            $orden->update(['total' => $total, 'estado' => $request->estado]);
 
             DB::commit();
-            return redirect()->route('orden.show', $orden)
+            return redirect()->route('orden.index')
                 ->with('success', 'Orden actualizada exitosamente!');
 
         } catch (\Exception $e) {
@@ -159,8 +159,10 @@ class OrdenController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Orden $orden)
     {
-        //
+        $orden->delete();
+
+        return to_route('orden.index');
     }
 }

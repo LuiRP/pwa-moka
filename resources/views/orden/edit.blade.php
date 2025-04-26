@@ -86,9 +86,15 @@
                 </div>
             @endif
 
-            <span class="m-3 ml-4">Total: <span class="font-bold" x-text="count"></span>$</span>
+            <div class="mx-4 flex flex-row justify-between">
+                <span class="m-3">Total: <span class="font-bold" x-text="count"></span>$</span>
+                <select name="estado" class="rounded-lg border-2 border-pink-600 py-1 text-sm">
+                    <option value="completada">Completada</option>
+                    <option value="pendiente" selected>Pendiente</option>
+                </select>
+            </div>
             <div class="mx-3 mt-3 flex flex-row place-content-between gap-4">
-                <x-cancel-button ruta="producto.index"></x-cancel-button>
+                <x-cancel-button ruta="orden.index"></x-cancel-button>
                 <x-save-button></x-save-button>
             </div>
         </form>
