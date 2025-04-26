@@ -23,6 +23,7 @@
                     <x-nav-item titulo="Usuarios" ruta="usuario.index" img="/images/nav-icons/usuarios"></x-nav-item>
                     <x-nav-item titulo="Zonas" ruta="zona.index" img="/images/nav-icons/zonas"></x-nav-item>
                 @endif
+                <x-nav-item titulo="Ordenes" ruta="orden.index" img="/images/nav-icons/ordenes"></x-nav-item>
                 <x-nav-item titulo="Volver" ruta="home" img="/images/nav-icons/volver"></x-nav-item>
                 <div>
                     <form method="POST" action="{{ route('logout') }}"
@@ -36,7 +37,7 @@
                 </div>
                 {{-- 
                 <x-nav-item titulo="Reservas" ruta="reservas.index" img="/images/nav-icons/reservas"></x-nav-item>
-                <x-nav-item titulo="Ordenes" ruta="ordenes.index" img="/images/nav-icons/ordenes"></x-nav-item>
+                
                 <x-nav-item titulo="Estadisticas" ruta="estadisticas.index"
                     img="/images/nav-icons/estadisticas"></x-nav-item> --}}
             </ul>

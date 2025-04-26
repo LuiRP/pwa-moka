@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\OrdenController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsuarioAdminController;
@@ -29,6 +30,7 @@ Route::middleware('auth')->group(function () {
     ]);
     Route::resource('usuario', UsuarioAdminController::class);
     Route::resource('zona', ZonaController::class);
+    Route::resource('orden', OrdenController::class);
 });
 
 require __DIR__ . '/auth.php';

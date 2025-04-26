@@ -27,15 +27,26 @@ class DatabaseSeeder extends Seeder
 
         Categoria::factory()->create([
             'nombre' => 'Postre',
-            'id' => '1'
         ]);
 
-        Producto::factory(12)->create([
+        Categoria::factory()->create([
+            'nombre' => 'Bebida',
+        ]);
+
+        Producto::factory(4)->create([
             'nombre' => fake()->firstNameFemale(),
             'categoria_id' => 1,
             'precio' => 5,
             'descripcion' => fake()->paragraph(3),
-            'imagen' => 'images/uploads/1745118941.jpg'
+            'imagen' => 'images/producto-placeholder.jpg'
+        ]);
+
+        Producto::factory(4)->create([
+            'nombre' => fake()->firstNameFemale(),
+            'categoria_id' => 2,
+            'precio' => 3,
+            'descripcion' => fake()->paragraph(3),
+            'imagen' => 'images/producto-placeholder.jpg'
         ]);
     }
 }
