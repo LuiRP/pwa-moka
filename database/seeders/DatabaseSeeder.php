@@ -25,6 +25,22 @@ class DatabaseSeeder extends Seeder
             'permiso' => '0'
         ]);
 
+        User::factory()->create([
+            'name' => 'Empleado',
+            'email' => 'empleado@empleado.com',
+            'password' => bcrypt('12345678'),
+            'telefono' => '1234-5678',
+            'permiso' => '1'
+        ]);
+
+        User::factory()->create([
+            'name' => 'Cliente',
+            'email' => 'cliente@cliente.com',
+            'password' => bcrypt('12345678'),
+            'telefono' => '1234-5678',
+            'permiso' => '2'
+        ]);
+
         Categoria::factory()->create([
             'nombre' => 'Postre',
         ]);
