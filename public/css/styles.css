@@ -83,7 +83,7 @@ body {
     justify-content: center;
     padding-right: 20px;
     text-align: center;
-    font-size: 60px;
+    font-size: 48px;
     font-weight: bold;
 }
 
@@ -99,7 +99,7 @@ body {
     border-radius: 40px;
     /* Más ovalado */
     font-weight: bold;
-    font-size: 50px;
+    font-size: 32px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
@@ -165,13 +165,13 @@ body {
 }
 
 .about-text h2 {
-    font-size: 60px;
+    font-size: 48px;
     margin: 0 0 20px 0;
     color: white;
 }
 
 .about-text p {
-    font-size: 32px;
+    font-size: 24px;
     margin: 0;
     line-height: 1.5;
     text-align: justify;
@@ -194,7 +194,7 @@ body {
 }
 
 h2 {
-    font-size: 4rem;
+    font-size: 2rem;
     color: #070707;
     margin-bottom: 30px;
 }
@@ -226,13 +226,13 @@ h2 span {
 }
 
 .horarios h2 {
-    font-size: 60px;
+    font-size: 48px;
     margin-bottom: 20px;
     color: #070707;
 }
 
 .horarios p {
-    font-size: 40px;
+    font-size: 32px;
     margin: 10px 0;
 }
 
@@ -412,7 +412,8 @@ input[type="reset"] {
     display: inline-block;
 }
 
-.float form, .float a {
+.float form,
+.float a {
     margin: 20px;
     display: inline-block;
     background-color: #FFDA1A;

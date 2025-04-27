@@ -24,7 +24,7 @@
                     <x-nav-item titulo="Zonas" ruta="zona.index" img="/images/nav-icons/zonas"></x-nav-item>
                 @endif
                 <x-nav-item titulo="Ordenes" ruta="orden.index" img="/images/nav-icons/ordenes"></x-nav-item>
-                <x-nav-item titulo="Volver" ruta="home" img="/images/nav-icons/volver"></x-nav-item>
+                <x-nav-item titulo="Volver" ruta="dashboard" img="/images/nav-icons/volver"></x-nav-item>
                 <div>
                     <form method="POST" action="{{ route('logout') }}"
                         class="mx-1 my-1.5 flex cursor-pointer items-center overflow-hidden rounded-md px-2 py-2 font-medium text-gray-600 transition-colors hover:bg-yellow-100 md:mx-3">
