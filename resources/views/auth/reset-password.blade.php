@@ -7,6 +7,7 @@
         <title>Restablecer Contraseña - MokaFrost</title>
         <link rel="stylesheet" href="{{ asset('css/reset-password.css') }}">
         <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
+        @laravelPWA
     </head>
 
     <body>

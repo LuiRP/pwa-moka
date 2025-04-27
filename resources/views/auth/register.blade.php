@@ -7,6 +7,7 @@
         <title>Registro de Usuario - MokaFrost</title>
         <link rel="stylesheet" href="{{ asset('css/style_register_user.css') }}">
         <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
+        @laravelPWA
     </head>
 
     <body>

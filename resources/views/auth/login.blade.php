@@ -7,6 +7,7 @@
         <title>Iniciar Sesión - MokaFrost</title>
         <link rel="stylesheet" href="{{ asset('css/login_style.css') }}">
         <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
+        @laravelPWA
     </head>
 
     <body>
