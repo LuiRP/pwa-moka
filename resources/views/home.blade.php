@@ -58,15 +58,16 @@
                 <div class="cta-text">
                     <p>¿Quieres <span class="highlight2">RESERVAR</span> y conocer nuestro <span
                             class="highlight2">MENÚ</span>?</p>
-                    @if (!Auth::user())
+                    @guest
                         <a href="{{ route('login') }}">
                             <button class="button">INICIAR SESIÓN</button>
                         </a>
-                    @else
+                    @endguest
+                    @auth
                         <a href="{{ route('reserva.create') }}">
                             <button class="button">Reservar</button>
                         </a>
-                    @endif
+                    @endauth
                 </div>
                 <div class="cta-image">
                     <img src="{{ asset('img/chica.png') }}" alt="Chica">
