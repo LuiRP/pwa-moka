@@ -9,10 +9,13 @@
                             class="rounded-lg bg-yellow-200 bg-opacity-50 p-1.5 text-lg font-medium uppercase tracking-wider text-yellow-800">
                             {{ $zona->nombre }}
                         </div>
-                    </div>
-                    <div class="flex place-content-between">
                         <div class="text-sm font-medium text-black">
                             {{ $zona->numero_personas }} personas
+                        </div>
+                    </div>
+                    <div class="flex place-content-between">
+                        <div class="mb-1 text-xl font-medium text-black">
+                            {{ $zona->costo }}$
                         </div>
                         <div>
                             <a class="inline-block" href="{{ route('zona.edit', $zona) }}"><img class="h-4"

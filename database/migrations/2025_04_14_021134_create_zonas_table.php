@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->timestamps();
             $table->char('nombre', 255);
             $table->integer('numero_personas');
+            $table->decimal('costo');
         });
     }
 

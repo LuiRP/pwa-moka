@@ -6,6 +6,7 @@ use App\Models\Categoria;
 use App\Models\Producto;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Zona;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -47,6 +48,18 @@ class DatabaseSeeder extends Seeder
 
         Categoria::factory()->create([
             'nombre' => 'Bebida',
+        ]);
+
+        Zona::factory()->create([
+            'nombre' => 'VIP',
+            'numero_personas' => 5,
+            'costo' => 5
+        ]);
+
+        Zona::factory()->create([
+            'nombre' => 'Regular',
+            'numero_personas' => 10,
+            'costo' => 3
         ]);
 
         Producto::factory(4)->create([

@@ -39,6 +39,7 @@ class ZonaController extends Controller
         $data = $request->validate([
             'nombre' => ['required', 'string'],
             'numero_personas' => ['required', 'integer'],
+            'costo' => ['required', 'decimal:0,4']
         ]);
 
         $zona = Zona::create($data);
@@ -70,6 +71,7 @@ class ZonaController extends Controller
         $data = $request->validate([
             'nombre' => ['required', 'string'],
             'numero_personas' => ['required', 'integer'],
+            'costo' => ['required', 'decimal:0,4']
         ]);
 
 

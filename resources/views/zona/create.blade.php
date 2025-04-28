@@ -14,6 +14,12 @@
                     <input class="rounded-lg border-pink-600" type="number" step="1" min="0"
                         name="numero_personas" value="{{ old('numero_personas') }}" required>
                 </div>
+
+                <div class="mt-3 flex flex-col gap-1">
+                    <label for="costo">Costo</label>
+                    <input class="rounded-lg border-2 border-pink-600" type="number" step="0.01" min="0"
+                        name="costo" value="{{ old('costo') }}" required>
+                </div>
             </div>
 
             @if ($errors->any())
