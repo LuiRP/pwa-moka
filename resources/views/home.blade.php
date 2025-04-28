@@ -11,7 +11,12 @@
 
     <body>
 
-        @if (Auth::user())
+        @guest
+            <div class="float">
+                <a href="/login">Iniciar Sesión</a>
+            </div>
+        @endguest
+        @auth
             @if (Auth::user()->permiso === 2)
                 <div class="float">
                     <a href="">Reservas</a>
@@ -25,13 +30,7 @@
                     <a href="/producto">Panel</a>
                 </div>
             @endif
-        @else
-            <div class="float">
-                <a href="/login">Iniciar Sesión</a>
-            </div>
-        @endif
-
-
+        @endauth
 
         <div class="header">
             <a href="{{ route('home') }}">
@@ -59,9 +58,15 @@
                 <div class="cta-text">
                     <p>¿Quieres <span class="highlight2">RESERVAR</span> y conocer nuestro <span
                             class="highlight2">MENÚ</span>?</p>
-                    <a href="{{ route('login') }}">
-                        <button class="button">INICIAR SESIÓN</button>
-                    </a>
+                    @if (!Auth::user())
+                        <a href="{{ route('login') }}">
+                            <button class="button">INICIAR SESIÓN</button>
+                        </a>
+                    @else
+                        <a href="{{ route('reserva.create') }}">
+                            <button class="button">Reservar</button>
+                        </a>
+                    @endif
                 </div>
                 <div class="cta-image">
                     <img src="{{ asset('img/chica.png') }}" alt="Chica">
