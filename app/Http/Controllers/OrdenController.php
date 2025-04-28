@@ -6,6 +6,7 @@ use App\Models\Categoria;
 use App\Models\Orden;
 use App\Models\OrdenProducto;
 use App\Models\Producto;
+use App\Models\Reserva;
 use DB;
 use Illuminate\Http\Request;
 
@@ -26,12 +27,23 @@ class OrdenController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        $categorias = Categoria::with('productos')
-            ->orderBy('id', 'desc')
-            ->simplePaginate(100);
-        return view('orden.create', ['categorias' => $categorias]);
+        if (auth()->user()->permiso == 2 && !$request->has('reserva_id')) {
+            abort(403, 'Acceso denegado.');
+        }
+
+        $reserva = null;
+        if ($request->has('reserva_id')) {
+            $reserva = Reserva::findOrFail($request->reserva_id);
+
+            if (auth()->user()->permiso == 2 && $reserva->user_id != auth()->id()) {
+                abort(403, 'Reservacion Invalida.');
+            }
+        }
+
+        $categorias = Categoria::with('productos')->get();
+        return view('orden.create', compact('categorias', 'reserva'));
     }
 
     /**
@@ -43,7 +55,8 @@ class OrdenController extends Controller
             'productos' => 'required|array',
             'productos.*.id' => 'required|exists:productos,id',
             'productos.*.cantidad' => 'required|integer|min:0',
-            'productos.*.precio' => 'required|numeric|min:0'
+            'productos.*.precio' => 'required|numeric|min:0',
+            'reserva_id' => 'sometimes|exists:reservas,id'
         ]);
 
         $productos = array_filter($request->productos, function ($producto) {
@@ -81,7 +94,18 @@ class OrdenController extends Controller
 
             $orden->update(['total' => $total]);
 
+            if ($request->has('reserva_id')) {
+                $reserva = Reserva::find($request->reserva_id);
+                $reserva->update(['orden_id' => $orden->id]);
+            }
+
+
             DB::commit();
+
+            if ($request->has('reserva_id')) {
+                return redirect()->route('reserva.show', ['reserva' => $request->reserva_id])
+                    ->with('success', 'Orden creada exitosamente!');
+            }
 
             return redirect()->route('orden.index')
                 ->with('success', 'Orden creada exitosamente!');

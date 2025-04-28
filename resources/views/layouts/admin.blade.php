@@ -17,7 +17,9 @@
     </head>
 
     <body class="flex min-h-screen flex-row bg-pink-600">
-        @include('components.sidebar')
+        @if (!(Auth::user()->permiso === 2))
+            @include('components.sidebar')
+        @endif
         <div class="m-2 flex w-full flex-col place-items-center">
             {{ $slot }}
         </div>

@@ -20,6 +20,13 @@
                             <div>
                                 <h2>Orden #{{ $orden->id }}</h2>
                             </div>
+                            @if ($orden->reserva)
+                                <div class="flex h-fit flex-row text-xs text-gray-400">
+                                    <a href="{{ route('reserva.show', $orden->reserva) }}">Pertenece a una reserva</a>
+                                </div>
+                            @endif
+
+
 
                         </div>
                         <div class="flex h-fit flex-row text-xs text-gray-400">
@@ -69,5 +76,5 @@
         <div class="mt-6">
             {{ $ordenes->links('vendor.pagination.simple-tailwind') }}
         </div>
-
+    </div>
 </x-admin-layout>

@@ -2,6 +2,10 @@
     <div x-data="{ count: 0 }" class="my-3 w-72 gap-4 space-y-3 place-self-center rounded-lg bg-white shadow md:w-96">
         <form action="{{ route('orden.store') }}" method="POST" class="text-pink-600">
             @csrf
+            @if (isset($reserva))
+                <input type="hidden" name="reserva_id" value="{{ $reserva->id }}">
+            @endif
+
             @foreach ($categorias as $categoria)
                 <div class="m-3 rounded-lg shadow" x-data="{ expanded: false }" x-init="expanded = false"
                     :class="{ 'h-[2.25rem] overflow-hidden': !expanded, 'h-80 overflow-scroll': expanded }" x-cloak>
