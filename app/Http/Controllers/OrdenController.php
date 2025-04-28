@@ -17,7 +17,7 @@ class OrdenController extends Controller
     public function index()
     {
         $ordenes = Orden::with(['user', 'productos'])
-            ->latest()
+            ->oldest()
             ->paginate(10);
 
         return view('orden.index', compact('ordenes'));
