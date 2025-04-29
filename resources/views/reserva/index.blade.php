@@ -1,12 +1,14 @@
 <x-admin-layout>
     <div class="flex w-full flex-row">
-        <div class="ml-1 mr-3 w-fit">
-            <a href="{{ route('home') }}" onclick="cancel(event)"
-                class="relative my-1.5 flex cursor-pointer items-center rounded-lg bg-gray-400 px-3 py-2 font-medium text-white shadow transition-colors hover:scale-110">
-                <img src="/images/nav-icons/cancelar.svg" alt="" class="h-6">
-                <span class="ml-3 mr-4">Volver</span>
-            </a>
-        </div>
+        @if (Auth::user()->permiso === 2)
+            <div class="ml-1 mr-3 w-fit">
+                <a href="{{ route('home') }}" onclick="cancel(event)"
+                    class="relative my-1.5 flex cursor-pointer items-center rounded-lg bg-gray-400 px-3 py-2 font-medium text-white shadow transition-colors hover:scale-110">
+                    <img src="/images/nav-icons/cancelar.svg" alt="" class="h-6">
+                    <span class="ml-3 mr-4">Volver</span>
+                </a>
+            </div>
+        @endif
         <x-search-bar ruta="reserva"></x-search-bar>
     </div>
 

@@ -106,8 +106,14 @@ class ReservaController extends Controller
      */
     public function destroy(Reserva $reserva)
     {
-        $reserva->delete();
+        DB::transaction(function () use ($reserva) {
+            if ($reserva->orden) {
+                $reserva->orden->delete();
+            }
 
-        return to_route('reserva.index');
+            $reserva->delete();
+        });
+
+        return redirect()->route('reserva.index');
     }
 }

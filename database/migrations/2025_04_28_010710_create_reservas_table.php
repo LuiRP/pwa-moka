@@ -15,8 +15,8 @@ return new class extends Migration {
             $table->timestamps();
             $table->string('nombre');
             $table->integer('numero_personas');
-            $table->foreignId('zona_id');
-            $table->foreignId('orden_id')->nullable()->constrained('ordenes');
+            $table->foreignId('zona_id')->constrained();
+            $table->foreignId('orden_id')->nullable()->constrained('ordenes')->onDelete('cascade');
             $table->foreignId('user_id')->constrained();
             $table->string('estado')->default('pendiente');
             $table->date('fecha');

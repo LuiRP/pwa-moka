@@ -19,7 +19,7 @@
         @auth
             @if (Auth::user()->permiso === 2)
                 <div class="float">
-                    <a href="">Reservas</a>
+                    <a href="{{ route('reserva.index') }}">Reservas</a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button>Cerrar Sesión</button>

@@ -91,11 +91,11 @@
                 @endif
 
                 <div class="mt-6 flex flex-row place-content-between gap-4">
-                    <div x-on:click="screen = 0"
+                    <a href="{{ route('home') }}"
                         class="my-1.5 flex w-fit cursor-pointer items-center rounded-lg bg-gray-400 px-3 py-2 font-medium text-white shadow transition-colors hover:scale-110">
                         <img src="/images/nav-icons/cancelar.svg" alt="" class="h-6">
                         <span class="w52 ml-3 overflow-hidden transition-all">Volver</span>
-                    </div>
+                    </a>
                     <button
                         class="relative my-1.5 flex w-fit cursor-pointer items-center rounded-lg bg-gradient-to-tr from-yellow-400 to-yellow-400 px-3 py-2 font-medium text-white shadow transition-colors hover:scale-110">
                         <img src="/images/nav-icons/agregar.svg" alt="" class="h-6">
