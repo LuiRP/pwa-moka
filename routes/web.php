@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\EstadisticaController;
 use App\Http\Controllers\OrdenController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProfileController;
@@ -38,6 +39,7 @@ Route::middleware(['auth', 'permission:1'])->group(function () {
     Route::resource('producto', ProductoController::class);
     Route::resource('orden', OrdenController::class);
     Route::resource('reserva', ReservaController::class);
+    Route::resource('estadistica', EstadisticaController::class);
 });
 
 

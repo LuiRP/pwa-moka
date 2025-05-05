@@ -25,6 +25,8 @@
                 @endif
                 <x-nav-item titulo="Ordenes" ruta="orden.index" img="/images/nav-icons/ordenes"></x-nav-item>
                 <x-nav-item titulo="Reservas" ruta="reserva.index" img="/images/nav-icons/reservas"></x-nav-item>
+                <x-nav-item titulo="Estadisticas" ruta="estadistica.index"
+                    img="/images/nav-icons/estadisticas"></x-nav-item>
                 <x-nav-item titulo="Volver" ruta="dashboard" img="/images/nav-icons/volver"></x-nav-item>
                 <div>
                     <form method="POST" action="{{ route('logout') }}"
@@ -36,12 +38,6 @@
                             Sesión</button>
                     </form>
                 </div>
-
-                {{-- 
-                
-                
-                <x-nav-item titulo="Estadisticas" ruta="estadisticas.index"
-                    img="/images/nav-icons/estadisticas"></x-nav-item> --}}
             </ul>
         </nav>
     </aside>

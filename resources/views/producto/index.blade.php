@@ -1,5 +1,10 @@
 <x-admin-layout>
     <x-search-bar ruta="producto"></x-search-bar>
+    @if (session('error'))
+        <div class="m-3 rounded-lg bg-red-100 p-3 text-red-800 w-full text-center">
+            {{ session('error') }}
+        </div>
+    @endif
     <div class="mt-3 grid grid-cols-1 gap-4 text-wrap md:grid-cols-2 lg:grid-cols-4">
         @foreach ($productos as $producto)
             <div class="flex h-96 w-64 flex-col rounded-lg bg-white text-center shadow">
@@ -8,8 +13,8 @@
                 </div>
                 <div class="flex h-64 flex-col justify-between space-y-2 p-4">
                     <div class="space-y-2">
-                        <div
-                            class="rounded-lg bg-yellow-200 bg-opacity-50 p-1.5 text-lg font-medium uppercase tracking-wider text-yellow-800">
+                        <div title="{{ $producto->nombre }}"
+                            class="rounded-lg truncate bg-yellow-200 bg-opacity-50 p-1.5 text-lg font-medium uppercase tracking-wider text-yellow-800">
                             {{ $producto->nombre }}
                         </div>
                         <div class="text-base text-gray-400">
@@ -46,7 +51,4 @@
     <div class="mt-6">
         {{ $productos->links('vendor.pagination.simple-tailwind') }}
     </div>
-
-
-
 </x-admin-layout>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use App\Models\Producto;
+use DB;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -124,6 +125,10 @@ class ProductoController extends Controller
      */
     public function destroy(Producto $producto)
     {
+        if ($producto->ordenes()->exists()) {
+            return back()->with('error', 'No se puede eliminar: el producto tiene órdenes relacionadas, elimine primero las órdenes');
+        }
+    
         $producto->delete();
 
         return to_route('producto.index');
