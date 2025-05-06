@@ -27,9 +27,6 @@ class Reserva extends Model
         return $this->belongsTo(Orden::class);
     }
 
-    /**
-     * Get the user who made the reservation.
-     */
     public function user()
     {
         return $this->belongsTo(User::class);
