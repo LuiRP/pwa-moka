@@ -18,8 +18,14 @@ class OrdenController extends Controller
     public function index()
     {
         $ordenes = Orden::with(['user', 'productos'])
-            ->oldest()
-            ->paginate(10);
+            ->oldest();
+
+
+        if (request()->has('buscar')) {
+            $ordenes = $ordenes->where('id', 'like', request()->get('buscar', '') . '%');
+        }
+
+        $ordenes = $ordenes->simplePaginate(8);
 
         return view('orden.index', compact('ordenes'));
     }

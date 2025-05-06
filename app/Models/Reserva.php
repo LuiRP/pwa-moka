@@ -18,7 +18,8 @@ class Reserva extends Model
         'hora',
         'zona_id',
         'orden_id',
-        'user_id'
+        'user_id',
+        'estado'
     ];
 
     public function orden()

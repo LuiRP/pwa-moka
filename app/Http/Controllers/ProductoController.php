@@ -20,9 +20,15 @@ class ProductoController extends Controller
             $productos = $productos->where('nombre', 'like', request()->get('buscar', '') . '%');
         }
 
-        $productos = $productos->simplePaginate(8);
+        if (request()->has('categoria')) {
+            $categoriaId = request()->get('categoria');
+            $productos = $productos->where('categoria_id', 'like', $categoriaId);
+        }
 
-        return view('producto.index', ['productos' => $productos]);
+        $productos = $productos->simplePaginate(8);
+        $categorias = Categoria::query()->orderBy('id', 'desc')->simplePaginate(100);
+
+        return view('producto.index', compact('productos', 'categorias'));
     }
 
     /**
@@ -88,7 +94,6 @@ class ProductoController extends Controller
      */
     public function update(Request $request, Producto $producto)
     {
-        // Validate the request data
         $validatedData = $request->validate([
             'nombre' => ['required', 'string'],
             'descripcion' => ['required', 'string'],
@@ -127,7 +132,7 @@ class ProductoController extends Controller
         if ($producto->ordenes()->exists()) {
             return back()->with('error', 'No se puede eliminar: el producto tiene órdenes relacionadas, elimine primero las órdenes');
         }
-    
+
         $producto->delete();
 
         return to_route('producto.index');

@@ -18,11 +18,18 @@ class ReservaController extends Controller
     {
         if (auth()->user()->permiso == 0 || auth()->user()->permiso == 1) {
             $reservas = Reserva::with(['user', 'orden', 'zona'])
-                ->oldest()
-                ->paginate(10);
+                ->oldest();
         } else {
-            $reservas = Reserva::where('user_id', auth()->id())->oldest()->paginate(10);
+            $reservas = Reserva::where('user_id', auth()->id())->oldest();
         }
+
+        if (request()->has('buscar')) {
+            $reservas = $reservas->where('id', 'like', request()->get('buscar', '') . '%');
+        }
+
+        $reservas = $reservas->simplePaginate(8);
+
+
 
         return view('reserva.index', compact('reservas'));
     }
@@ -96,9 +103,13 @@ class ReservaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Reserva $reserva)
     {
-        //
+        $validated = $request->validate([
+            'estado' => 'required'
+        ]);
+        $reserva->update($validated);
+        return to_route('reserva.index', $reserva);
     }
 
     /**
