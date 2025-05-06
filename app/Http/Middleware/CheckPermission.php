@@ -28,6 +28,7 @@ class CheckPermission
                 'reserva.create',
                 'reserva.store',
                 'reserva.show',
+                'reserva.destroy',
                 'orden.create',
                 'orden.store'
             ];

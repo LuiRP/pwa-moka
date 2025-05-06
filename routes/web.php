@@ -33,13 +33,14 @@ Route::middleware(['auth', 'permission:0'])->group(function () {
     ]);
     Route::resource('usuario', UsuarioAdminController::class);
     Route::resource('zona', ZonaController::class);
+    Route::resource('estadistica', EstadisticaController::class);
 });
 
 Route::middleware(['auth', 'permission:1'])->group(function () {
     Route::resource('producto', ProductoController::class);
     Route::resource('orden', OrdenController::class);
     Route::resource('reserva', ReservaController::class);
-    Route::resource('estadistica', EstadisticaController::class);
+
 });
 
 

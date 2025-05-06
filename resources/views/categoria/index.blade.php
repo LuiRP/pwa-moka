@@ -28,7 +28,7 @@
             </div>
         @endforeach
     </div>
-    <div class="mt-6">
+    <div class="mt-6 w-full">
         {{ $categorias->links('vendor.pagination.simple-tailwind') }}
     </div>
 

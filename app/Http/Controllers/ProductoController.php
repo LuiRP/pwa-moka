@@ -39,7 +39,6 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the request data
         $validatedData = $request->validate([
             'nombre' => ['required', 'string'],
             'descripcion' => ['required', 'string'],

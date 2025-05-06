@@ -29,6 +29,7 @@
             @foreach ($orden->ordenProductos as $ordenProducto)
                 <div class="mx-3 flex flex-row justify-between">
                     <div>
+                        {{ $ordenProducto->producto->categoria->nombre }}: 
                         {{ $ordenProducto->producto->nombre }}
                         x{{ $ordenProducto->cantidad }}
                     </div>

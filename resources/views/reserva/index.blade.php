@@ -77,7 +77,7 @@
                     <div class="justify-center">
                         <a class="inline-block" href="{{ route('reserva.show', $reserva) }}"><img class="h-4"
                                 src="/images/nav-icons/detalles.svg" alt=""></a>
-                        @if (Auth::user()->permiso === 0)
+                        @if (Auth::user()->permiso === 0 || Auth::user()->permiso === 2)
                             <form class="inline-block" action="{{ route('reserva.destroy', $reserva) }}"
                                 method="POST">
                                 @csrf

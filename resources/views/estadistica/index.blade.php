@@ -28,7 +28,7 @@
                             class="rounded-lg bg-yellow-200 bg-opacity-50 p-1 truncate text-sm font-medium uppercase w-32 tracking-wider text-yellow-800">
                             {{ $producto->producto->nombre }}
                         </div>
-                        <div class="text-base text-gray-400">
+                        <div class=" text-gray-400 text-sm">
                             {{ $producto->vendidos }}
                             Vendidos
                         </div>

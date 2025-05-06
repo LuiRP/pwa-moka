@@ -33,7 +33,7 @@
             </div>
         @endforeach
     </div>
-    <div class="mt-6">
+    <div class="mt-6 w-full">
         {{ $zonas->links('vendor.pagination.simple-tailwind') }}
     </div>
 

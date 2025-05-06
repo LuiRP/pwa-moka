@@ -73,7 +73,7 @@
                 </div>
             </div>
         @endforeach
-        <div class="mt-6">
+        <div class="mt-6 w-full">
             {{ $ordenes->links('vendor.pagination.simple-tailwind') }}
         </div>
     </div>

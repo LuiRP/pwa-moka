@@ -48,7 +48,7 @@
 
     </div>
 
-    <div class="mt-6">
+    <div class="mt-6 w-full">
         {{ $productos->links('vendor.pagination.simple-tailwind') }}
     </div>
 </x-admin-layout>

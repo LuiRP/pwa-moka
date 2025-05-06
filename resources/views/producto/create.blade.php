@@ -11,7 +11,7 @@
 
                 <div class="mt-3 flex flex-col gap-1">
                     <label for="descripcion">Descripción</label>
-                    <textarea class="resize-none rounded-lg border-2 border-pink-600" name="descripcion" id="" required
+                    <textarea class="resize-none rounded-lg border-2 border-pink-600" name="descripcion" id=""
                         rows="5">{{ old('descripcion') }}</textarea>
                 </div>
 
@@ -29,7 +29,7 @@
 
                 <div class="mt-3 flex flex-col gap-1">
                     <label for="precio">Precio</label>
-                    <input class="rounded-lg border-2 border-pink-600" type="number" step="0.01" min="0"
+                    <input class="rounded-lg border-2 border-pink-600" type="number" step="0.1" min="0"
                         name="precio" value="{{ old('precio') }}" required>
                 </div>
 
